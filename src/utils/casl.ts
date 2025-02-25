@@ -6,13 +6,18 @@ export type Subjects = "Task" | "User";//table tname
 export const defineAbilitiesFor = (role: string, permissions: Record<string, boolean> = {}) => {
   const { can, build } = new AbilityBuilder(createMongoAbility);
 
-  if (role === "ADMIN") {
+  if (role === "ADMIN") 
+  {
     can("manage", "all"); 
-  } else if (role === "SUBADMIN") {
+  } 
+  else if (role === "SUBADMIN") 
+  {
     if (permissions.viewAllTasks) can("view", "Task");
     if (permissions.editAllTasks) can("edit", "Task");
     if (permissions.deleteAllTasks) can("delete", "Task");
-  } else {
+  } 
+  else 
+  {
     can("view", "Task", { ownerId: "self"});
   }
 

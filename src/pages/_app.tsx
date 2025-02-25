@@ -26,12 +26,9 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("auth_user") || "{}");
     setUser(storedUser);
-    // console.log(storedUser);
   }, []);
 
-  // useEffect(() => {
-  //   console.log("Updated User:", user); // Correct way to log updated state
-  // }, [user]);
+  
   return (
     <AbilityProvider role={user.role} permissions={user.permissions}>
       <Wrapper>

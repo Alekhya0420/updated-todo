@@ -139,7 +139,7 @@ const LoginPage: React.FC = () => {
 
         <Typography variant="body2" textAlign="center" mt={2}>
           New Here? {" "}
-          <Link href="/auth/register" style={{ color: "#bbb", textDecoration: "none", fontWeight: "bold" }}>
+          <Link href="/auth/register/RegisterPage" style={{ color: "#bbb", textDecoration: "none", fontWeight: "bold" }}>
             Sign Up
           </Link>
         </Typography>

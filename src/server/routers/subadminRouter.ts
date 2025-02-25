@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { router, procedure } from "../trpc";  // Ensure `publicProcedure` or `protectedProcedure` is used
+import { router, procedure } from "../trpc"; 
 
 export const subadminRouter = router({
   
@@ -18,7 +18,7 @@ export const subadminRouter = router({
   }),
 
 
-  // Edit the task after granting permission
+//Edit task
   updateTask: procedure
   .input(z.object({ id: z.string(), title: z.string(), description: z.string(), deadline: z.string() }))
   .mutation(async ({ ctx, input }) => {
@@ -28,7 +28,7 @@ export const subadminRouter = router({
     });
   }),
 
-  // Delete task after only permission granted
+// Delete task
   deleteTask: procedure
     .input(z.object({ taskId: z.string() }))
     .mutation(async ({ ctx, input }) => {

@@ -5,13 +5,11 @@
 // import SettingsIcon from "@mui/icons-material/Settings";
 // import { useRouter } from "next/router";
 
-// const SubAdminSidebar = () => {
+// const UserSidebar = () => {
 //   const router = useRouter();
 
 //   const menuItems = [
-//     { text: "Dashboard", icon: <DashboardIcon />, path: "/subadmin/dashboard" },
-//     // { text: "Users", icon: <PeopleIcon />, path: "/admin/dashboard" },
-//     // { text: "Settings", icon: <SettingsIcon />, path: "/admin/settings" },
+//     { text: "Dashboard", icon: <DashboardIcon />, path: "/user/dashboard" },
 //   ];
 
 //   return (
@@ -20,6 +18,7 @@
 //       sx={{
 //         width: 240,
 //         flexShrink: 0,
+//         backgroundColor:"black",
 //         "& .MuiDrawer-paper": {
 //           width: 240,
 //           boxSizing: "border-box",
@@ -40,27 +39,18 @@
 //   );
 // };
 
-// export default SubAdminSidebar;
+// export default UserSidebar;
 
 
 import React from "react";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Divider,
-} from "@mui/material";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Divider } from "@mui/material";
 import { useRouter } from "next/router";
 
-const SubAdminSidebar = () => {
+const UserSlider = () => {
   const router = useRouter();
 
   const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, path: "/subadmin/dashboard" },
+    { text: "Mydashboard", path: "/user/dashboard" },
   ];
 
   return (
@@ -72,26 +62,24 @@ const SubAdminSidebar = () => {
         "& .MuiDrawer-paper": {
           width: 240,
           boxSizing: "border-box",
-          backgroundColor: "#121216", // Dark background
-          color: "#ffffff", // White text
+          bgcolor: "#121219", // Blackish background
+          color: "white", 
         },
       }}
     >
       <Toolbar />
-      <Divider sx={{ backgroundColor: "#333" }} />
+      <Divider sx={{ bgcolor: "gray" }} /> 
       <List>
         {menuItems.map((item) => (
-          <ListItem
-            key={item.text}
-            onClick={() => router.push(item.path)}
+          <ListItem 
+            key={item.text} 
+            onClick={() => router.push(item.path)} 
             sx={{
-              "&:hover": {
-                backgroundColor: "#1e1e1e", // Slightly lighter black
-              },
+              "&:hover": { bgcolor: "#333" }, // Slight hover effect
+              color: "white",
             }}
           >
-            <ListItemIcon sx={{ color: "#ffffff" }}>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.text} />
+            <ListItemText primary={item.text} sx={{ color: "white" }} /> {/* White text */}
           </ListItem>
         ))}
       </List>
@@ -99,4 +87,4 @@ const SubAdminSidebar = () => {
   );
 };
 
-export default SubAdminSidebar;
+export default UserSlider;

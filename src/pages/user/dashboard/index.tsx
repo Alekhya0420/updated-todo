@@ -9,7 +9,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { skipToken } from "@tanstack/react-query";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import UserSidebar from "@/components/UserSidebar";
+import UserSlider from "@/components/UserSlider";
 
 
 interface AuthUser {
@@ -97,7 +97,7 @@ const UserDashboard = () => {
 
   return (
     <Box display="flex" sx={{bgcolor:"#121212",pb:"130px"}}>
-      <UserSidebar />
+      <UserSlider/>
       <Container maxWidth="md" sx={{bgcolor:"#121212"}}>
         <Typography variant="h4" align="center" color="red" gutterBottom>
           Hello {authUser?.name} 👋🏽
@@ -211,6 +211,7 @@ const UserDashboard = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
+                            sx={{ border: "2px solid red", borderRadius: 2, p: 1, mb: 1, backgroundColor: "#121212" }}
                             secondaryAction={
                               <IconButton onClick={() => deleteTask.mutate(task.id)} color="error">
                                 <DeleteIcon />
@@ -223,7 +224,7 @@ const UserDashboard = () => {
                               checked={task.completed}
                               onChange={() => toggleTask.mutate(task.id)}
                             />
-                            <ListItemText sx={{color:"red",border:"1px solid red"}}
+                            <ListItemText sx={{color:"red"}}
                               primary={task.title}
                               secondary={
                                 <>

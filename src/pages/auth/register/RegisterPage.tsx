@@ -236,7 +236,7 @@ const RegisterPage: React.FC = () => {
         {/* Login Link */}
         <Typography variant="body2" textAlign="center" mt={2}>
           Already Have an Account? 
-          <Link href={'/auth/login'} style={{ color: "#bbb", textDecoration: "none", fontWeight: "bold" }}>
+          <Link href={'/auth/login/LoginPage'} style={{ color: "#bbb", textDecoration: "none", fontWeight: "bold" }}>
             {" "}Log In
           </Link>
         </Typography>

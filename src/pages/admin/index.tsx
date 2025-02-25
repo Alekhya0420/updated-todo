@@ -96,7 +96,7 @@ const AdminDashboard = () => {
 
         <Box display="flex" gap={3}>
           <Paper elevation={3} sx={{ flex: 1, p: 3,bgcolor:"black",color:"red"}}>
-            <Typography variant="h6">👥 Users</Typography>
+            <Typography variant="h6">All users</Typography>
             <List sx={{border:"1px solid red"}}>
               {users?.map((user: User) => (
                 <ListItem
@@ -123,7 +123,7 @@ const AdminDashboard = () => {
           {/* Selected User's Tasks */}
           {selectedUser && (
             <Paper elevation={3} sx={{ flex: 2, p: 3,bgcolor:"black",color:"red" }}>
-              <Typography variant="h6">📝 Tasks</Typography>
+              <Typography variant="h6">All tasks</Typography>
               <List>
 
 
@@ -184,14 +184,25 @@ const AdminDashboard = () => {
 
         {/* Edit Task Dialog */}
         {editTask && (
-          <Dialog open={Boolean(editTask)} onClose={() => setEditTask(null)}>
-            <DialogTitle>Edit Task</DialogTitle>
-            <DialogContent>
+
+          <Dialog 
+          sx={{ 
+            "& .MuiDialog-paper": { 
+              border: "1px solid gray",
+              boxShadow: "0px 4px 10px rgba(255, 50, 50, 0.5)", // Stylish red shadow
+              borderRadius: "12px",  // Slightly rounded corners for a modern look  
+            } 
+          }}
+          open={Boolean(editTask)} onClose={() => setEditTask(null)}>
+            <DialogTitle sx={{backgroundColor:"black",color:"red"}}>Edit Task</DialogTitle>
+            <DialogContent sx={{backgroundColor:"black"}}>
               <TextField
                 label="Task Title"
                 value={editTask.title}
                 onChange={(e) => setEditTask({ ...editTask, title: e.target.value })}
                 fullWidth
+                InputLabelProps={{ style: { color: "white" } }}
+                sx={{ input: { color: "white" }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: "white" }, '&:hover fieldset': { borderColor: "gray" } } }}
                 margin="dense"
               />
               <TextField
@@ -200,8 +211,8 @@ const AdminDashboard = () => {
                 onChange={(e) => setEditTask({ ...editTask, description: e.target.value })}
                 fullWidth
                 margin="dense"
-                multiline
-                rows={3}
+                InputLabelProps={{ style: { color: "white" } }}
+                sx={{ input: { color: "white" }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: "white" }, '&:hover fieldset': { borderColor: "gray" } } }}
               />
               <TextField
                 label="Deadline"
@@ -210,11 +221,12 @@ const AdminDashboard = () => {
                 onChange={(e) => setEditTask({ ...editTask, deadline: e.target.value })}
                 fullWidth
                 margin="dense"
-                InputLabelProps={{ shrink: true }}
+                InputLabelProps={{ shrink: true, style: { color: "white" } }}                
+                sx={{ input: { color: "white" }, '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: "white" }, '&:hover fieldset': { borderColor: "gray" } } }}
               />
             </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setEditTask(null)}>Cancel</Button>
+            <DialogActions sx={{backgroundColor:"black"}}>
+              <Button sx={{backgroundColor:"black",color:"blue"}} onClick={() => setEditTask(null)}>Cancel</Button>
               <Button
                 onClick={() =>
                   updateTask.mutate({
@@ -230,6 +242,9 @@ const AdminDashboard = () => {
               </Button>
             </DialogActions>
           </Dialog>
+
+
+
         )}
       </Container>
     </Box>
